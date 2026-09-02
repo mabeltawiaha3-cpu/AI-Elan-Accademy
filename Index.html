@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI ELAN Academy | Learn AI & Digital Skills</title>
+  
+  <meta name="description" content="Learn practical AI and digital skills with AI ELAN Academy. Explore beginner-friendly AI training, AI image and video creation, websites, blogging, digital branding and more.">
+  <meta property="og:title" content="AI ELAN Academy | Learn AI & Digital Skills">
+  <meta property="og:description" content="Practical AI and digital skills training designed to take you from beginner to confident digital creator.">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <style>
+    /* --------------------------------------------------
+       CORE BRAND VARIABLES & RESET
+    -------------------------------------------------- */
+    :root {
+      --bg-main: #0B0E14;
+      --bg-card: #131822;
+      --bg-card-hover: #1A212E;
+      --surface-light: #FBF9F5;
+      
+      --navy-dark: #0A0D14;
+      --navy-light: #161D2A;
+      --purple-primary: #7C3AED;
+      --purple-soft: #8B5CF6;
+      --purple-glow: rgba(124, 58, 237, 0.25);
+      --cream-accent: #F5EBE6;
+      
+      --text-main: #F1F5F9;
+      --text-muted: #94A3B8;
+      --text-dark: #0F172A;
+      
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-focus: rgba(139, 92, 246, 0.5);
+      
+      --font-heading: 'Playfair Display', Georgia, serif;
+      --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    body {
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* --------------------------------------------------
+       TYPOGRAPHY
+    -------------------------------------------------- */
+    h1, h2, h3, h4 {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--text-main);
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #FFFFFF 30%, var(--purple-soft) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      background: rgba(124, 58, 237, 0.1);
+      border: 1px solid rgba(124, 58, 237, 0.3);
+      border-radius: 100px;
+      color: var(--purple-soft);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    /* --------------------------------------------------
+       COMPONENTS & BUTTONS
+    -------------------------------------------------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.85rem 1.8rem;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--purple-primary), var(--purple-soft));
+      color: #FFFFFF;
+      box-shadow: 0 4px 20px var(--purple-glow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-full {
+      width: 100%;
+    }
+
+    /* --------------------------------------------------
+       HEADER & NAVIGATION
+    -------------------------------------------------- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(11, 14, 20, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .nav-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+    }
+
+    .logo-img {
+      height: 48px;
+      width: auto;
+      border-radius: 8px;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text-main);
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-main);
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    .mobile-drawer {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 320px;
+      height: 100vh;
+      background: var(--navy-light);
+      z-index: 1001;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      transition: var(--transition);
+      box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+    }
+
+    .mobile-drawer.open {
+      right: 0;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: 1000;
+      display: none;
+    }
+
+    .overlay.show {
+      display: block;
+    }
+
+    /* --------------------------------------------------
+       PAGE ROUTING
+    -------------------------------------------------- */
+    .page {
+      display: none;
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* --------------------------------------------------
+       COMMON LAYOUT SECTIONS
+    -------------------------------------------------- */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 2.5rem;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      border-color: rgba(139, 92, 246, 0.3);
+      transform: translateY(-4px);
+    }
+
+    /* --------------------------------------------------
+       HERO SECTION
+    -------------------------------------------------- */
+    .hero {
+      position: relative;
+      padding: 6rem 1.5rem 8rem;
+      background: radial-gradient(circle at 50% 20%, rgba(124, 58, 237, 0.15) 0%, rgba(11, 14, 20, 0) 70%);
+      overflow: hidden;
+    }
+
+    .hero-content {
+      max-width: 850px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-graphic {
+      margin-top: 4rem;
+      position: relative;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      background: var(--navy-light);
+      padding: 1rem;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+
+    .hero-graphic-inner {
+      background: var(--bg-main);
+      border-radius: var(--radius-md);
+      height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-image: radial-gradient(rgba(124, 58, 237, 0.2) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    /* --------------------------------------------------
+       VALUE STRIP
+    -------------------------------------------------- */
+    .value-strip {
+      border-y: 1px solid var(--border-subtle);
+      background: var(--navy-light);
+      padding: 1.5rem 0;
+    }
+
+    .strip-items {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .strip-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .strip-item i {
+      color: var(--purple-soft);
+      font-size: 1.2rem;
+    }
+
+    /* --------------------------------------------------
+       PRICING & PROGRAM CARDS
+    -------------------------------------------------- */
+    .badge-inaugural {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: #10B981;
+      color: #FFFFFF;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.75rem;
+      border-radius: 100px;
+      text-transform: uppercase;
+    }
+
+    .price-tag {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin: 1rem 0;
+    }
+
+    .price-strike {
+      text-decoration: line-through;
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      margin-left: 0.5rem;
+    }
+
+    .highlight-box {
+      background: rgba(124, 58, 237, 0.08);
+      border-left: 4px solid var(--purple-soft);
+      padding: 1.25rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+    }
+
+    /* --------------------------------------------------
+       CURRICULUM TIMELINE
+    -------------------------------------------------- */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 3rem auto 0;
+    }
+
+    .timeline-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.5rem 2rem;
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .timeline-num {
+      background: linear-gradient(135deg, var(--purple-primary), var(--purple-soft));
+      color: #FFFFFF;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* --------------------------------------------------
+       CERTIFICATE MOCKUP
+    -------------------------------------------------- */
+    .certificate-frame {
+      background: var(--surface-light);
+      color: var(--text-dark);
+      padding: 3rem;
+      border-radius: var(--radius-md);
+      border: 8px solid #E2E8F0;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      text-align: center;
+      position: relative;
+    }
+
+    .certificate-frame h3 {
+      color: var(--text-dark);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .cert-seal {
+      width: 70px;
+      height: 70px;
+      background: #D97706;
+      border-radius: 50%;
+      margin: 2rem auto 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      font-size: 2rem;
+    }
+
+    /* --------------------------------------------------
+       FAQ ACCORDION
+    -------------------------------------------------- */
+    .accordion {
+      max-width: 800px;
+      margin: 3rem auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .accordion-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+
+    .accordion-header {
+      width: 100%;
+      padding: 1.25rem 1.5rem;
+      background: none;
+      border: none;
+      color: var(--text-main);
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      font-weight: 600;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      background: rgba(0,0,0,0.2);
+    }
+
+    .accordion-body {
+      padding: 1.25rem 1.5rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    /* --------------------------------------------------
+       FORM CONTROLS
+    -------------------------------------------------- */
+    .form-group {
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      background: var(--navy-light);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--purple-soft);
+      box-shadow: 0 0 0 3px var(--purple-glow);
+    }
+
+    /* --------------------------------------------------
+       FOOTER
+    -------------------------------------------------- */
+    footer {
+      background: var(--navy-dark);
+      border-top: 1px solid var(--border-subtle);
+      padding: 4rem 1.5rem 2rem;
+      margin-top: auto;
+    }
+
+    .footer-content {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr repeat(3, 1fr);
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--navy-light);
+      border: 1px solid var(--border-subtle);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      transition: var(--transition);
+    }
+
+    .social-icon:hover {
+      color: var(--text-main);
+      border-color: var(--purple-soft);
+      transform: translateY(-2px);
+    }
+
+    .footer-bottom {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-subtle);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* --------------------------------------------------
+       RESPONSIVE DESIGN
+    -------------------------------------------------- */
+    @media (max-width: 992px) {
+      .grid-2, .grid-3 {
+        grid-template-columns: 1fr;
+      }
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-btn {
+        display: none;
+      }
+      .mobile-toggle {
+        display: block;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+      .container {
+        padding: 3.5rem 1.25rem;
+      }
+      .timeline-item {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <a onclick="navigateTo('home')" class="brand-logo" style="cursor:pointer">
+        <img src="logo.png" alt="AI ÉLAN Academy Logo" class="logo-img">
+        <span>AI ÉLAN <span style="font-weight: 300; font-size:0.9rem; color: var(--purple-soft)">ACADEMY</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a id="nav-home" onclick="navigateTo('home')" class="active">Home</a></li>
+        <li><a id="nav-about" onclick="navigateTo('about')">About</a></li>
+        <li><a id="nav-beginner" onclick="navigateTo('beginner')">Beginner Class</a></li>
+        <li><a id="nav-masterclass" onclick="navigateTo('masterclass')">Masterclass</a></li>
+        <li><a id="nav-faq" onclick="navigateTo('faq')">FAQ</a></li>
+        <li><a id="nav-contact" onclick="navigateTo('contact')">Contact</a></li>
+      </ul>
+
+      <button onclick="navigateTo('enroll')" class="btn btn-primary nav-btn">ENROLL NOW</button>
+      <button class="mobile-toggle" onclick="toggleMobileMenu()"><i class="ph-bold ph-list"></i></button>
+    </div>
+  </header>
+
+  <div class="overlay" id="overlay" onclick="toggleMobileMenu()"></div>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <div class="brand-logo">
+        <img src="logo.png" alt="AI ÉLAN Academy Logo" class="logo-img">
+        <span>AI ÉLAN</span>
+      </div>
+      <button onclick="toggleMobileMenu()" style="background:none; border:none; color:white; font-size:1.5rem;"><i class="ph-bold ph-x"></i></button>
+    </div>
+    <ul style="list-style: none; display: flex; flex-direction: column; gap: 1.25rem; margin-top: 1rem;">
+      <li><a onclick="navigateTo('home'); toggleMobileMenu();">Home</a></li>
+      <li><a onclick="navigateTo('about'); toggleMobileMenu();">About</a></li>
+      <li><a onclick="navigateTo('beginner'); toggleMobileMenu();">Beginner Class</a></li>
+      <li><a onclick="navigateTo('masterclass'); toggleMobileMenu();">Masterclass</a></li>
+      <li><a onclick="navigateTo('faq'); toggleMobileMenu();">FAQ</a></li>
+      <li><a onclick="navigateTo('contact'); toggleMobileMenu();">Contact</a></li>
+    </ul>
+    <button onclick="navigateTo('enroll'); toggleMobileMenu();" class="btn btn-primary btn-full">ENROLL NOW</button>
+  </div>
+
+  <main>
+
+    <div id="page-home" class="page active">
+      <section class="hero">
+        <div class="hero-content">
+          <div class="section-tag"><i class="ph-bold ph-sparkle"></i> The Future of Practical AI</div>
+          <h1>Learn AI. Create Smarter.<br><span class="gradient-text">Build Your Digital Future.</span></h1>
+          <p>Practical AI and digital skills training designed to take you from beginner to confident digital creator.</p>
+          <div class="hero-buttons">
+            <button onclick="navigateTo('beginner')" class="btn btn-primary">Start With Beginner Class</button>
+            <button onclick="navigateTo('masterclass')" class="btn btn-secondary">Explore Masterclass</button>
+          </div>
+        </div>
+
+        <div class="container" style="padding-top:2rem; padding-bottom:0;">
+          <div class="hero-graphic">
+            <div class="hero-graphic-inner">
+              <div class="text-center" style="padding:2rem;">
+                <img src="logo.png" alt="AI ÉLAN Academy Logo" style="max-height: 120px; margin: 0 auto 1.5rem; filter: drop-shadow(0 0 15px var(--purple-glow));">
+                <h3 style="margin-bottom:0.5rem;">AI ELAN Digital Workspace</h3>
+                <p style="font-size:0.9rem; color:var(--text-muted); max-width:400px;">Hands-on, project-based mastery designed for real-world digital execution.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="value-strip">
+        <div class="container" style="padding:0;">
+          <div class="strip-items">
+            <div class="strip-item"><i class="ph-bold ph-check-circle"></i> Practical Learning</div>
+            <div class="strip-item"><i class="ph-bold ph-calendar"></i> 4-Week Programs</div>
+            <div class="strip-item"><i class="ph-bold ph-user-check"></i> Beginner Friendly</div>
+            <div class="strip-item"><i class="ph-bold ph-certificate"></i> Certificate of Completion</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container">
+        <div class="grid-2">
+          <div>
+            <div class="section-tag">About The Academy</div>
+            <h2>Welcome to AI ÉLAN Academy</h2>
+            <p style="color: var(--text-muted); margin: 1.5rem 0;">AI ÉLAN Academy was created to make AI and digital skills simple, practical and accessible. Whether you are completely new to AI or ready to take your digital skills further, AI ÉLAN helps you understand and apply modern AI tools to content creation, personal branding, websites, blogging, digital projects and online opportunities.</p>
+            <div class="highlight-box">
+              <strong>Core Statement:</strong> We don't just teach you about AI. We teach you how to use it.
+            </div>
+            <button onclick="navigateTo('about')" class="btn btn-secondary" style="margin-top:1rem;">Learn More About Us</button>
+          </div>
+          <div class="card" style="display:flex; align-items:center; justify-content:center; text-align:center; min-height:300px;">
+            <div>
+              <img src="logo.png" alt="AI ÉLAN Logo" style="max-height: 100px; margin: 0 auto 1rem;">
+              <h4>Empowerment Through Skills</h4>
+              <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Unlocking practical innovation across the continent.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container" style="background: rgba(22, 29, 42, 0.3); border-radius: var(--radius-lg);">
+        <div class="text-center" style="max-width: 600px; margin: 0 auto 3rem;">
+          <div class="section-tag">Programmes</div>
+          <h2>Choose Your Learning Path</h2>
+          <p style="color: var(--text-muted);">Select the program that matches your experience level and ambitions.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <span class="badge-inaugural">Inaugural Offer</span>
+            <h3>AI ELAN Beginner Class</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.25rem;">From Beginner to Confident AI User</p>
+            
+            <div class="price-tag">FREE <span class="price-strike">GH₵50</span></div>
+            <p style="font-size:0.85rem; color:#10B981; margin-bottom: 1.5rem;">*The first AI ELAN Beginner Class is FREE as our inaugural cohort. Future Beginner Classes will be GH₵50.</p>
+            
+            <ul style="list-style:none; display:flex; flex-direction:column; gap:0.75rem; margin-bottom: 2rem; color:var(--text-muted); font-size:0.95rem;">
+              <li><i class="ph-bold ph-check" style="color:var(--purple-soft)"></i> Duration: 4 Weeks</li>
+              <li><i class="ph-bold ph-check" style="color:var(--purple-soft)"></i> Certificate of Completion included</li>
+              <li><i class="ph-bold ph-check" style="color:var(--purple-soft)"></i> Beginner-friendly fundamentals</li>
+            </ul>
+
+            <button onclick="navigateTo('enroll', 'Beginner Class')" class="btn btn-primary btn-full">Enroll in Beginner Class</button>
+          </div>
+
+          <div class="card" style="border-color: rgba(124, 58, 237, 0.4);">
+            <div class="section-tag" style="margin-bottom:0.5rem;">Advanced</div>
+            <h3>AI ELAN Masterclass</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.25rem;">Take Your AI & Digital Skills Further</p>
+            
+            <div class="price-tag">GH₵150</div>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom: 1.5rem;">Full 4-Week Comprehensive Masterclass Access</p>
+
+            <div class="highlight-box" style="margin-top:0; margin-bottom:1.5rem;">
+              <strong>Note:</strong> You do NOT need to complete the Beginner Class before enrolling in the Masterclass. Already know the basics? Join directly!
+            </div>
+
+            <button onclick="navigateTo('enroll', 'Masterclass')" class="btn btn-primary btn-full">Enroll in Masterclass</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="container">
+        <div class="text-center" style="max-width: 600px; margin: 0 auto 3rem;">
+          <div class="section-tag">The Difference</div>
+          <h2>Why Choose AI ÉLAN?</h2>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <i class="ph-duotone ph-smiley" style="font-size: 2.5rem; color:var(--purple-soft); margin-bottom:1rem;"></i>
+            <h4>Beginner Friendly</h4>
+            <p style="color:var(--text-muted); font-size:0.9rem; margin-top:0.5rem;">Learn without complicated technical jargon or theoretical overload.</p>
+          </div>
+          <div class="card">
+            <i class="ph-duotone ph-wrench" style="font-size: 2.5rem; color:var(--purple-soft); margin-bottom:1rem;"></i>
+            <h4>Practical Focus</h4>
+            <p style="color:var(--text-muted); font-size:0.9rem; margin-top:0.5rem;">Learn by actually creating, executing, and building projects.</p>
+          </div>
+          <div class="card">
+            <i class="ph-duotone ph-device-mobile" style="font-size: 2.5rem; color:var(--purple-soft); margin-bottom:1rem;"></i>
+            <h4>Phone-Friendly</h4>
+            <p style="color:var(--text-muted); font-size:0.9rem; margin-top:0.5rem;">Many lessons and tools can be accessed and executed right from your smartphone.</p>
+          </div>
+          <div class="card">
+            <i class="ph-duotone ph-steps" style="font-size: 2.5rem; color:var(--purple-soft); margin-bottom:1rem;"></i>
+            <h4>Step-by-Step</h4>
+            <p style="color:var(--text-muted); font-size:0.9rem; margin-top:0.5rem;">Follow a clear, structured learning journey designed for success.</p>
+          </div>
+          <div class="card">
+            <i class="ph-duotone ph-folder-simple-star" style="font-size: 2.5rem; color:var(--purple-soft); margin-bottom:1rem;"></i>
+            <h4>Real Projects</h4>
+            <p style="color:var(--text-muted); font-size:0.9rem; margin-top:0.5rem;">Build actual digital assets you can publish, sell, or use immediately.</p>
+          </div>
+          <div class="card">
+            <i class="ph-duotone ph-certificate" style="font-size: 2.5rem; color:var(--purple-soft); margin-bottom:1rem;"></i>
+            <h4>Certificate</h4>
+            <p style="color:var(--text-muted); font-size:0.9rem; margin-top:0.5rem;">Receive a formal Certificate of Completion upon successful graduation.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="container" style="border-top:1px solid var(--border-subtle);">
+        <div class="text-center" style="max-width: 600px; margin: 0 auto 3rem;">
+          <div class="section-tag">Community</div>
+          <h2>Student Testimonials</h2>
+        </div>
+        <div class="grid-3">
+          <div class="card text-center" style="opacity: 0.6; border-style: dashed;">
+            <i class="ph-duotone ph-quotes" style="font-size:2rem; margin-bottom:1rem; color:var(--text-muted);"></i>
+            <p style="font-style:italic; font-size:0.9rem;">Student Testimonials Coming Soon</p>
+            <p style="color:var(--text-muted); font-size:0.8rem; margin-top:1rem;">Inaugural Cohort Currently Enrolling</p>
+          </div>
+          <div class="card text-center" style="opacity: 0.6; border-style: dashed;">
+            <i class="ph-duotone ph-quotes" style="font-size:2rem; margin-bottom:1rem; color:var(--text-muted);"></i>
+            <p style="font-style:italic; font-size:0.9rem;">Student Testimonials Coming Soon</p>
+            <p style="color:var(--text-muted); font-size:0.8rem; margin-top:1rem;">Inaugural Cohort Currently Enrolling</p>
+          </div>
+          <div class="card text-center" style="opacity: 0.6; border-style: dashed;">
+            <i class="ph-duotone ph-quotes" style="font-size:2rem; margin-bottom:1rem; color:var(--text-muted);"></i>
+            <p style="font-style:italic; font-size:0.9rem;">Student Testimonials Coming Soon</p>
+            <p style="color:var(--text-muted); font-size:0.8rem; margin-top:1rem;">Inaugural Cohort Currently Enrolling</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <div id="page-about" class="page">
+      <section class="container">
+        <div class="text-center" style="max-width: 700px; margin: 0 auto 4rem;">
+          <div class="section-tag">About AI ELAN</div>
+          <h1>Democratizing Digital Creation Across Africa</h1>
+          <p style="color:var(--text-muted); font-size:1.1rem;">We make AI and digital skills simple, practical, and immediately accessible.</p>
+        </div>
+
+        <div class="grid-2" style="margin-bottom: 5rem;">
+          <div>
+            <h3>Our Mission</h3>
+            <p style="color:var(--text-muted); margin-top:1rem;">AI ÉLAN Academy was created with a simple mission: to make AI and digital skills easier to understand, practical to learn, and useful in the real world.</p>
+            <p style="color:var(--text-muted); margin-top:1rem;">Whether you are completely new to AI or ready to take your digital skills further, AI ÉLAN helps you understand and apply modern AI tools to content creation, personal branding, websites, blogging, digital projects, and online opportunities.</p>
+          </div>
+          <div class="card">
+            <h4>Who AI ELAN Is For:</h4>
+            <ul style="list-style:none; margin-top:1rem; display:flex; flex-direction:column; gap:0.5rem; color:var(--text-muted);">
+              <li><i class="ph-bold ph-check" style="color:var(--purple-soft)"></i> Complete Beginners & Students</li>
+              <li><i class="ph-bold ph-check" style="color:var(--purple-soft)"></i> Content Creators & Influencers</li>
+              <li><i class="ph-bold ph-check" style="color:var(--purple-soft)"></i> Entrepreneurs & Business Owners</li>
+              <li><i class="ph-bold ph-check" style="color:var(--purple-soft)"></i> Freelancers & Aspiring Digital Creators</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card" style="background: var(--navy-light);">
+          <div class="grid-2">
+            <div style="text-align:center;">
+              <div style="width: 180px; height: 180px; border-radius: 50%; background: var(--bg-card); margin: 0 auto; display: flex; align-items: center; justify-content: center; border: 2px solid var(--purple-soft); overflow:hidden;">
+                <img src="logo.png" alt="AI ÉLAN Logo" style="width: 100%; height: 100%; object-fit: cover;">
+              </div>
+              <h4 style="margin-top:1rem;">Founder, AI ÉLAN</h4>
+            </div>
+            <div>
+              <div class="section-tag">Meet The Founder</div>
+              <h3 style="margin-bottom:1rem;">Empowerment Through Tech</h3>
+              <p style="color:var(--text-muted); font-size:0.95rem;">AI ÉLAN Academy was created with a simple mission: to make AI and digital skills easier to understand, practical to learn and useful in the real world.</p>
+              <p style="color:var(--text-muted); font-size:0.95rem; margin-top:0.75rem;">Our curriculum is engineered specifically for modern creators who need actionable execution over passive theory.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div id="page-beginner" class="page">
+      <section class="container">
+        <div class="text-center" style="max-width: 700px; margin: 0 auto 3rem;">
+          <div class="section-tag">Beginner Program</div>
+          <h1>Start Your AI Journey From Zero</h1>
+          <p style="color:var(--text-muted); font-size:1.1rem; margin-top:1rem;">Designed specifically for complete beginners with no technical background required.</p>
+        </div>
+
+        <div class="card" style="max-width:900px; margin: 0 auto 4rem; border-color: rgba(16, 185, 129, 0.4);">
+          <span class="badge-inaugural">Inaugural Offer</span>
+          <h3>AI ELAN Beginner Class</h3>
+          <p style="color:var(--text-muted); margin-top:0.5rem;">4 Weeks • Certificate Included • Beginner Friendly</p>
+          
+          <div class="price-tag" style="margin: 1.5rem 0;">FREE <span class="price-strike">GH₵50</span></div>
+          <p style="font-size:0.9rem; color:#10B981; margin-bottom: 2rem;">*The first Beginner Class cohort is completely FREE. Future cohorts will cost GH₵50.</p>
+
+          <h4 style="margin-bottom:1rem;">What You'll Learn:</h4>
+          <div class="grid-2" style="gap:1rem;">
+            <ul style="list-style:none; display:flex; flex-direction:column; gap:0.5rem; color:var(--text-muted);">
+              <li><i class="ph-bold ph-check" style="color:var(--purple-soft)"></i> Understanding AI Fundamentals</li>
+              <li><i class="ph-bold ph-check" style="color:var(--purple-soft)"></i> Communicating with AI effectively</li>
+              <li><i class="ph-bold ph-check" style="color:var(--purple-soft)"></i> Prompt engineering basics</li>
+              <li><i class="ph-bold ph-check" style="color:var(--purple-soft)"></i> AI for basic content creation</li>
+              <li><i class="ph-bold ph-check" style="color:var(--purple-soft)"></i> AI image creation principles</li>
+            </ul>
+            <ul style="list-style:none; display:flex; flex-direction:column; gap:0.5rem; color:var(--text-muted);">
+              <li><i class="ph-bold ph-check" style="color:var(--purple-soft)"></i> AI video creation basics</li>
+              <li><i class="ph-bold ph-check" style="color:var(--purple-soft)"></i> Essential productivity tools</li>
+              <li><i class="ph-bold ph-check" style="color:var(--purple-soft)"></i> Practical everyday AI workflows</li>
+              <li><i class="ph-bold ph-check" style="color:var(--purple-soft)"></i> Digital content publishing</li>
+              <li><i class="ph-bold ph-check" style="color:var(--purple-soft)"></i> Next steps & self-learning roadmap</li>
+            </ul>
+          </div>
+
+          <button onclick="navigateTo('enroll', 'Beginner Class')" class="btn btn-primary btn-full" style="margin-top:2.5rem;">Enroll in Beginner Class</button>
+        </div>
+      </section>
+    </div>
+
+    <div id="page-masterclass" class="page">
+      <section class="container">
+        <div class="text-center" style="max-width: 750px; margin: 0 auto 3rem;">
+          <div class="section-tag">Advanced Program</div>
+          <h1>AI ELAN Masterclass</h1>
+          <p style="color:var(--text-muted); font-size:1.1rem; margin-top:0.5rem;">From AI Skills to Practical Digital Creation</p>
+          
+          <div class="price-tag" style="margin-top:1rem;">GH₵150 <span style="font-size:1rem; color:var(--text-muted); font-weight:normal;">/ 4 Weeks</span></div>
+
+          <div class="highlight-box" style="text-align:left; max-width:600px; margin:1.5rem auto;">
+            <strong>Important:</strong> You can enroll directly in the Masterclass without taking the Beginner Class.
+          </div>
+        </div>
+
+        <h2 class="text-center" style="margin-bottom: 2rem;">10-Module Comprehensive Curriculum</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-num">1</div>
+            <div>
+              <h4>AI for Digital Creation</h4>
+              <p style="color:var(--text-muted); font-size:0.9rem;">Content creation, ideas, scripts, captions, digital workflows, and personal branding strategies.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-num">2</div>
+            <div>
+              <h4>AI Image Creation</h4>
+              <p style="color:var(--text-muted); font-size:0.9rem;">Realistic images, branded visuals, prompt engineering, and building consistent visual styles.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-num">3</div>
+            <div>
+              <h4>AI Video Creation</h4>
+              <p style="color:var(--text-muted); font-size:0.9rem;">Video concepts, AI-generated scenes, storytelling, short-form content, and video production workflows.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-num">4</div>
+            <div>
+              <h4>AI Influencers</h4>
+              <p style="color:var(--text-muted); font-size:0.9rem;">Developing AI influencer concepts, consistent digital characters, visuals, and social strategy.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-num">5</div>
+            <div>
+              <h4>Website Creation with AI</h4>
+              <p style="color:var(--text-muted); font-size:0.9rem;">Website planning, structure, AI-assisted code & design, and launching live sites.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-num">6</div>
+            <div>
+              <h4>Blogging</h4>
+              <p style="color:var(--text-muted); font-size:0.9rem;">Building blog sites, content management, growth techniques, and structuring for future monetization.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-num">7</div>
+            <div>
+              <h4>AdSense & Digital Monetization</h4>
+              <p style="color:var(--text-muted); font-size:0.9rem;">Preparing site structures for Google AdSense and understanding eligibility & monetization pathways.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-num">8</div>
+            <div>
+              <h4>PayPal Setup</h4>
+              <p style="color:var(--text-muted); font-size:0.9rem;">Setting up PayPal for global digital transactions (subject to regional availability & policies).</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-num">9</div>
+            <div>
+              <h4>UK TikTok Strategy</h4>
+              <p style="color:var(--text-muted); font-size:0.9rem;">Understanding international account setup concepts, eligibility, and strategic content planning.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-num">10</div>
+            <div>
+              <h4>AI for Business & Personal Branding</h4>
+              <p style="color:var(--text-muted); font-size:0.9rem;">Marketing, business content automation, scaling productivity, and client services.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:5rem;">
+          <h3 class="text-center" style="margin-bottom:2rem;">Bonus Masterclass Training</h3>
+          <div class="grid-3">
+            <div class="card text-center">
+              <i class="ph-duotone ph-video-camera" style="font-size:2.5rem; color:var(--purple-soft); margin-bottom:0.5rem;"></i>
+              <h4>🎁 AI Video Master Kit</h4>
+              <p style="color:var(--text-muted); font-size:0.85rem; margin-top:0.5rem;">Advanced scene transition workflows.</p>
+            </div>
+            <div class="card text-center">
+              <i class="ph-duotone ph-image" style="font-size:2.5rem; color:var(--purple-soft); margin-bottom:0.5rem;"></i>
+              <h4>🎁 AI Image Prompt Vault</h4>
+              <p style="color:var(--text-muted); font-size:0.85rem; margin-top:0.5rem;">Curated collection of realistic styling prompts.</p>
+            </div>
+            <div class="card text-center">
+              <i class="ph-duotone ph-lightning" style="font-size:2.5rem; color:var(--purple-soft); margin-bottom:0.5rem;"></i>
+              <h4>🎁 Productivity Templates</h4>
+              <p style="color:var(--text-muted); font-size:0.85rem; margin-top:0.5rem;">Ready-to-use content execution calendars.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 5rem;">
+          <div class="text-center" style="max-width:600px; margin: 0 auto 3rem;">
+            <h2>Earn Your Certificate</h2>
+            <p style="color:var(--text-muted); margin-top:0.5rem;">Students who successfully complete their selected 4-week program earn an official Certificate of Completion.</p>
+          </div>
+
+          <div class="certificate-frame" style="max-width:700px; margin: 0 auto;">
+            <p style="text-transform:uppercase; letter-spacing:0.1em; font-weight:700; color:var(--purple-primary); font-size:0.8rem;">Official Certificate</p>
+            <h3>AI ÉLAN ACADEMY</h3>
+            <p style="font-family: var(--font-heading); font-style: italic; margin: 1rem 0;">Certificate of Completion</p>
+            <p style="font-size:0.85rem; color:var(--text-dark);">This certifies that <strong>[Student Name]</strong> has successfully completed the 4-Week Program.</p>
+            <div class="cert-seal"><i class="ph-bold ph-seal-check"></i></div>
+          </div>
+        </div>
+
+        <div style="text-align:center; margin-top:3rem;">
+          <button onclick="navigateTo('enroll', 'Masterclass')" class="btn btn-primary" style="padding:1rem 3rem; font-size:1.1rem;">Enroll in Masterclass Now</button>
+        </div>
+
+      </section>
+    </div>
+
+    <div id="page-faq" class="page">
+      <section class="container">
+        <div class="text-center" style="max-width: 650px; margin: 0 auto 3rem;">
+          <div class="section-tag">Questions & Answers</div>
+          <h1>Frequently Asked Questions</h1>
+          <p style="color:var(--text-muted);">Everything you need to know about AI ÉLAN programs and enrollment.</p>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+              <span>Is the Beginner Class free?</span>
+              <i class="ph-bold ph-caret-down"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-body">
+                The first AI ELAN Beginner Class is FREE as the inaugural cohort. Future Beginner Classes will cost GH₵50.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+              <span>How much is the Masterclass?</span>
+              <i class="ph-bold ph-caret-down"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-body">
+                The Masterclass is GH₵150 for the full 4-week program.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+              <span>How long is each program?</span>
+              <i class="ph-bold ph-caret-down"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-body">
+                Each program runs for a duration of 4 weeks.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+              <span>Do I need to take the Beginner Class before the Masterclass?</span>
+              <i class="ph-bold ph-caret-down"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-body">
+                No. You can enroll directly in the Masterclass if you feel comfortable skipping the absolute basics.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+              <span>Can I learn using my phone?</span>
+              <i class="ph-bold ph-caret-down"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-body">
+                Yes. Many of the modern AI tools and lessons covered in our programs can be fully accessed using a smartphone.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+              <span>Will I receive a certificate?</span>
+              <i class="ph-bold ph-caret-down"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-body">
+                Yes. All students who successfully complete their selected 4-week program receive a Certificate of Completion.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+              <span>Will we learn PayPal setup?</span>
+              <i class="ph-bold ph-caret-down"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-body">
+                Yes. PayPal account setup principles are included in the Masterclass, subject to PayPal availability and regional policies in your country.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+              <span>Will I make money immediately after the course?</span>
+              <i class="ph-bold ph-caret-down"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-body">
+                We do not promise guaranteed income. AI ÉLAN teaches highly practical skills and digital opportunities, but your individual results depend on your effort, practice, market factors, and implementation.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div id="page-contact" class="page">
+      <section class="container">
+        <div class="grid-2">
+          <div>
+            <div class="section-tag">Get In Touch</div>
+            <h1>Let's Connect</h1>
+            <p style="color:var(--text-muted); margin: 1.5rem 0;">Have questions about our upcoming cohorts or custom learning paths? Send us a direct message.</p>
+
+            <div style="display:flex; flex-direction:column; gap:1.25rem; margin-top:2rem;">
+              <div style="display:flex; align-items:center; gap:1rem;">
+                <div class="social-icon"><i class="ph-bold ph-envelope"></i></div>
+                <div>
+                  <div style="font-size:0.8rem; color:var(--text-muted);">Email</div>
+                  <div><a href="mailto:mabeltawiaha2@gmail.com" style="color:var(--purple-soft)">mabeltawiaha2@gmail.com</a></div>
+                </div>
+              </div>
+              <div style="display:flex; align-items:center; gap:1rem;">
+                <div class="social-icon"><i class="ph-bold ph-whatsapp-logo"></i></div>
+                <div>
+                  <div style="font-size:0.8rem; color:var(--text-muted);">WhatsApp</div>
+                  <div>Available upon request</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Send a Message</h3>
+            <form action="https://formspree.io/f/mabeltawiaha2@gmail.com" method="POST" style="margin-top:1.5rem;">
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" name="name" class="form-control" placeholder="Your full name" required>
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" class="form-control" placeholder="Your email address" required>
+              </div>
+              <div class="form-group">
+                <label>WhatsApp Number</label>
+                <input type="tel" name="whatsapp" class="form-control" placeholder="Your phone number" required>
+              </div>
+              <div class="form-group">
+                <label>Message</label>
+                <textarea name="message" class="form-control" rows="4" placeholder="How can we help you?" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div id="page-enroll" class="page">
+      <section class="container">
+        <div class="card" style="max-width: 600px; margin: 0 auto;">
+          <div class="text-center" style="margin-bottom: 2rem;">
+            <div class="section-tag">Registration</div>
+            <h2>Enroll in AI ÉLAN</h2>
+            <p style="color:var(--text-muted); font-size:0.9rem; margin-top:0.5rem;">Secure your spot in our upcoming cohort.</p>
+          </div>
+
+          <form id="enrollForm" action="https://formspree.io/f/mabeltawiaha2@gmail.com" method="POST">
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" name="full_name" class="form-control" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" name="email" class="form-control" placeholder="Enter your email address" required>
+            </div>
+            <div class="form-group">
+              <label>WhatsApp Number</label>
+              <input type="tel" name="whatsapp" class="form-control" placeholder="Enter your active WhatsApp contact" required>
+            </div>
+            <div class="form-group">
+              <label>Select Program</label>
+              <select id="programSelect" name="program" class="form-control" required>
+                <option value="Beginner Class">Beginner Class — FREE Inaugural Offer (Reg GH₵50)</option>
+                <option value="Masterclass">Masterclass — GH₵150</option>
+              </select>
+            </div>
+
+            <input type="hidden" name="_subject" value="New AI ÉLAN Academy Enrollment!">
+
+            <button type="submit" class="btn btn-primary btn-full" style="margin-top:1rem;">Complete Enrollment</button>
+          </form>
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div>
+        <div class="brand-logo" style="margin-bottom: 1rem;">
+          <img src="logo.png" alt="AI ÉLAN Academy Logo" class="logo-img">
+          <span>AI ÉLAN ACADEMY</span>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Learn. Create. Innovate.</p>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top:0.5rem;">Making AI and digital skills practical, simple, and accessible across Africa.</p>
+        
+        <div class="social-links">
+          <a href="#" class="social-icon" aria-label="TikTok"><i class="ph-bold ph-tiktok-logo"></i></a>
+          <a href="#" class="social-icon" aria-label="Instagram"><i class="ph-bold ph-instagram-logo"></i></a>
+          <a href="#" class="social-icon" aria-label="Facebook"><i class="ph-bold ph-facebook-logo"></i></a>
+          <a href="#" class="social-icon" aria-label="YouTube"><i class="ph-bold ph-youtube-logo"></i></a>
+          <a href="#" class="social-icon" aria-label="X"><i class="ph-bold ph-x-logo"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h4 style="font-size: 1rem; margin-bottom: 1rem;">Programs</h4>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">
+          <li><a onclick="navigateTo('beginner')">Beginner Class (GH₵50 / Free)</a></li>
+          <li><a onclick="navigateTo('masterclass')">Masterclass (GH₵150)</a></li>
+          <li><a onclick="navigateTo('masterclass')">Certifications</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 style="font-size: 1rem; margin-bottom: 1rem;">Navigation</h4>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">
+          <li><a onclick="navigateTo('home')">Home</a></li>
+          <li><a onclick="navigateTo('about')">About Us</a></li>
+          <li><a onclick="navigateTo('faq')">FAQ</a></li>
+          <li><a onclick="navigateTo('contact')">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 style="font-size: 1rem; margin-bottom: 1rem;">Legal & Policy</h4>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Monetization Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2026 AI ELAN Academy. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    // SPA ROUTING
+    function navigateTo(pageId, preselectProgram) {
+      document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+      });
+
+      const targetPage = document.getElementById('page-' + pageId);
+      if (targetPage) {
+        targetPage.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.classList.remove('active');
+      });
+      const activeNav = document.getElementById('nav-' + pageId);
+      if (activeNav) {
+        activeNav.classList.add('active');
+      }
+
+      if (preselectProgram) {
+        const select = document.getElementById('programSelect');
+        if (select) {
+          select.value = preselectProgram;
+        }
+      }
+    }
+
+    // MOBILE DRAWER TOGGLE
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobileDrawer');
+      const overlay = document.getElementById('overlay');
+      drawer.classList.toggle('open');
+      overlay.classList.toggle('show');
+    }
+
+    // ACCORDION TOGGLE
+    function toggleAccordion(button) {
+      const content = button.nextElementSibling;
+      const isExpanded = content.style.maxHeight && content.style.maxHeight !== '0px';
+
+      document.querySelectorAll('.accordion-content').forEach(item => {
+        item.style.maxHeight = null;
+      });
+
+      if (!isExpanded) {
+        content.style.maxHeight = content.scrollHeight + 'px';
+      }
+    }
+  </script>
+</body>
+</html>
